@@ -1,0 +1,130 @@
+/* OrderInfo.module.css */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    min-height: 100vh;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: 'Avenir Next Cyr'; /*х Основное объявление шрифта */
+}
+
+.centeredContainer {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+}
+
+.title {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 500; /* Medium */
+    font-family: 'Avenir Next Cyr'; /* Основное объявление шрифта */
+
+}
+
+.instructions {
+    font-size: 24px;
+    line-height: 0.3; /* Исправлено с 0.3 на адекватное значение */
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.scanGuide {
+    margin-top: 25px;
+    font-size: 22px;
+    text-align: left; /* Изменено с center для лучшей читаемости */
+    background: #F9EFDC;
+    margin-bottom: 25px ;
+}
+
+.checkboxLine {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: flex-start; /* Изменено с center */
+}
+
+.checkbox {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #f00300;
+    border-radius: 4px;
+    margin-right: 15px;
+    color: #f00300;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.indentedText {
+    margin-left: 39px; /* Объединено с padding-left */
+    color: #666;
+    font-size: 20px;
+    text-align: center;
+    position: relative;
+    left: -24px;
+}
+
+.divider {
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 40px auto;
+    width: 80%;
+}
+
+.fallbackSection {
+    font-size: 24px;
+    color: #555;
+}
+
+.inputContainer {
+    display: flex;
+    margin: 20px auto 0; /* Центрирование через margin */
+    gap: 15px;
+    max-width: 600px;
+}
+
+.inputField {
+    flex: 1;
+    min-width: 200px;
+    padding: 15px 20px;
+    font-size: 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit; /* Наследует Avenir Next Cyr */
+}
+
+.inputField:focus {
+    border-color: #f00300;
+    outline: none;
+}
+
+.searchButton {
+    padding: 0 40px;
+    background-color: #f00300;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: 500; /* Medium */
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.searchButton:hover {
+    background-color: #d0021b;
+}
+
+.image1Icon {
+    width: 100%;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}

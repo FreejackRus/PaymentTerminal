@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Avenir Next Cyr', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+    touch-action: manipulation;
+    user-select: none;
+}
+
+.app {
+    width: 1080px;
+    height: 1920px;
+    position: relative;
+    background-color: #fff;
+    transform: rotate(0deg);
+    overflow: hidden;
+}
+
+button {
+    font-family: inherit;
+    font-size: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+    touch-action: manipulation;
+}

@@ -1,0 +1,26 @@
+{
+  "appId": "com.vokkdcterminal.payment",
+  "productName": "Платежный терминал ВОККДЦ",
+  "directories": {
+    "output": "dist"
+  },
+  "files": [
+    "build/**/*",
+    "electron/**/*"
+  ],
+  "win": {
+    "target": "portable",
+    "icon": "public/assets/images/icon.ico"
+  },
+  "linux": {
+    "target": "AppImage",
+    "category": "Utility",
+    "icon": "public/assets/images/icon.png"
+  },
+  "extraResources": [
+    {
+      "from": "electron/native-modules",
+      "to": "native-modules"
+    }
+  ]
+}

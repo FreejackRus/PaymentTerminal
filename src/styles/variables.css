@@ -1,0 +1,6 @@
+:root {
+  --primary-font: 'Avenir Next Cyr';
+  --container-width: 1080px;
+  --input-padding: 12px 20px;
+  --transition-duration: 0.3s;
+}

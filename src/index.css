@@ -1,13 +1,52 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Глобальные стили шрифтов */
+@import url('https://fonts.cdnfonts.com/css/avenir-next-cyr');
+
+@font-face {
+  font-family: 'Avenir Next Cyr';
+  src: local('Avenir Next Cyr Thin'), local('AvenirNextCyr-Thin'),
+  url('./assets/fonts/AvenirNextCyr-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: 'Avenir Next Cyr';
+  src: local('Avenir Next Cyr Light'), local('AvenirNextCyr-Light'),
+  url('./assets/fonts/AvenirNextCyr-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next Cyr';
+  src: local('Avenir Next Cyr Regular'), local('AvenirNextCyr-Regular'),
+  url('./assets/fonts/AvenirNextCyr-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next Cyr';
+  src: local('Avenir Next Cyr Medium'), local('AvenirNextCyr-Medium'),
+  url('./assets/fonts/AvenirNextCyr-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next Cyr';
+  src: local('Avenir Next Cyr Bold'), local('AvenirNextCyr-Bold'),
+  url('./assets/fonts/AvenirNextCyr-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Установите шрифт по умолчанию */
+body {
+  font-family: 'Avenir Next Cyr', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }

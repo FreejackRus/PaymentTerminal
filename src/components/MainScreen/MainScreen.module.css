@@ -1,0 +1,71 @@
+/* MainScreen.module.css */
+
+.wrapper {
+    width: 1080px;
+    height: 1920px;
+    position: relative;
+    background: white;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    font-family: 'Avenir Next Cyr', sans-serif;
+}
+
+
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    gap: 80px;
+}
+
+.mainLogo {
+    width: 400px;
+    height: auto;
+}
+
+.clinicName {
+    font-size: 56px;
+    font-weight: 500;
+    line-height: 1.3;
+    text-align: center;
+    max-width: 900px;
+    color: #333;
+    margin: 0;
+}
+
+
+
+.paymentButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: #F00300;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 20px 40px;
+    font-size: 32px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Avenir Next Cyr', sans-serif;
+    min-width: 400px;
+    margin: 80px auto 0;
+}
+
+.paymentButton:hover {
+    background: #0056CC;
+    transform: translateY(-2px);
+}
+
+.arrowIcon {
+    width: 32px;
+    height: 32px;
+}

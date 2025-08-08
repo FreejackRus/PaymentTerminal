@@ -1,0 +1,63 @@
+.progressBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    margin: 40px 0;
+    padding: 0 60px;
+}
+
+.stepContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.step {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #E5E5E5;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 600;
+    font-family: 'Avenir Next Cyr', sans-serif;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+}
+
+.step.active {
+    background: #F00300;
+    color: white;
+}
+
+.stepLabel {
+    font-size: 28px;
+    font-family: 'Avenir Next Cyr', sans-serif;
+    color: #999;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.stepLabel.activeLabel {
+    color: #333;
+    font-weight: 500;
+}
+
+.connector {
+    position: absolute;
+    top: 30px;
+    left: 100%;
+    width: 60px;
+    height: 4px;
+    background: #E5E5E5;
+    transition: background 0.3s ease;
+}
+
+.connector.activeConnector {
+    background: #F00300;
+}

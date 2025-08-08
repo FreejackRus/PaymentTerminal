@@ -1,0 +1,158 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: #FFFFFF;
+    font-family: 'Avenir Next Cyr', sans-serif;
+}
+
+.paymentInfo {
+    padding: 60px;
+    max-width: 900px;
+    margin: 0 auto;
+    flex: 1;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.title {
+    font-size: 48px;
+    font-weight: 600;
+    font-family: 'Avenir Next Cyr', sans-serif;
+    color: #333;
+    margin: 0;
+}
+
+.status {
+    background: #FFF3CD;
+    border: 2px solid #FFEAA7;
+    border-radius: 12px;
+    padding: 12px 24px;
+}
+
+.statusText {
+    font-size: 24px;
+    font-family: 'Avenir Next Cyr', sans-serif;
+    color: #856404;
+    font-weight: 500;
+}
+
+.servicesTable {
+    background: white;
+    border-radius: 16px;
+    border: 2px solid #E5E5E5;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.tableHeader {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    background: #F8F9FA;
+    padding: 20px 30px;
+    border-bottom: 2px solid #E5E5E5;
+    font-size: 24px;
+    font-weight: 600;
+    font-family: 'Avenir Next Cyr', sans-serif;
+    color: #666;
+}
+
+.tableBody {
+    background: white;
+}
+
+.tableRow {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 24px 30px;
+    border-bottom: 1px solid #F0F0F0;
+    font-size: 28px;
+    font-family: 'Avenir Next Cyr', sans-serif;
+    color: #333;
+}
+
+.tableRow:last-child {
+    border-bottom: none;
+}
+
+.nameColumn {
+    text-align: left;
+}
+
+.quantityColumn {
+    text-align: center;
+}
+
+.priceColumn {
+    text-align: right;
+    font-weight: 500;
+}
+
+.tableFooter {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    background: #F8F9FA;
+    padding: 24px 30px;
+    border-top: 2px solid #E5E5E5;
+    font-size: 32px;
+    font-weight: 600;
+    font-family: 'Avenir Next Cyr', sans-serif;
+    color: #333;
+}
+
+.totalLabel {
+    grid-column: 1 / 3;
+    text-align: left;
+}
+
+.totalAmount {
+    text-align: right;
+    color: #F00300;
+}
+
+.actions {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.backButton {
+    background: #F8F9FA;
+    border: 2px solid #E5E5E5;
+    border-radius: 16px;
+    padding: 20px 60px;
+    font-size: 32px;
+    font-family: 'Avenir Next Cyr', sans-serif;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.backButton:hover {
+    background: #E9ECEF;
+    border-color: #CED4DA;
+}
+
+.payButton {
+    background: #F00300;
+    border: 2px solid #F00300;
+    border-radius: 16px;
+    padding: 20px 60px;
+    font-size: 32px;
+    font-family: 'Avenir Next Cyr', sans-serif;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.payButton:hover {
+    background: #0056CC;
+    border-color: #0056CC;
+}
