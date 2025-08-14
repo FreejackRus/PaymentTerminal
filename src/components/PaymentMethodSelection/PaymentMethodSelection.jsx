@@ -38,7 +38,8 @@ const PaymentMethodSelection = ({ paymentData, onBack, onCardPayment, onSBPPayme
                 </div>
                 
                 <div className={styles.paymentMethods}>
-                    <button 
+                    {/* Временно скрыта оплата картой */}
+                    {/* <button 
                         className={styles.paymentMethod}
                         onClick={onCardPayment}
                     >
@@ -59,7 +60,7 @@ const PaymentMethodSelection = ({ paymentData, onBack, onCardPayment, onSBPPayme
                             alt=""
                             src={ArrowIcon}
                         />
-                    </button>
+                    </button> */}
                     
                     <button 
                         className={styles.paymentMethod}
