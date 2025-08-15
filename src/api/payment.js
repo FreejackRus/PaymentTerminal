@@ -3,15 +3,11 @@ import { config } from '../config/config';
 export const saveTransactionSBP = async (orderNumber, amount, patientData) => {
   try {
     const callbackName = `jsonp_${Date.now()}_${Math.floor(Math.random() * 100000)}`;
-    const url = new URL('https://vodc.ru/ambulat25/partner/save-transaction-sbp');
-    url.searchParams.append('orderNumber', orderNumber);
-    url.searchParams.append('amount', amount);
-    url.searchParams.append('patientData', patientData);
-    url.searchParams.append('callback', callbackName);
+    const url = `https://vodc.ru/ambulat25/partner/save-transaction-sbp?orderNumber=${encodeURIComponent(orderNumber)}&amount=${encodeURIComponent(amount)}&patientData=${encodeURIComponent(patientData)}&callback=${encodeURIComponent(callbackName)}`;
     
-    console.log('Requesting SBP transaction:', url.toString());
+    console.log('Requesting SBP transaction:', url);
     
-    const response = await fetch(url.toString(), {
+    const response = await fetch(url, {
       method: 'GET',
       mode: 'cors',
     });
@@ -57,13 +53,7 @@ export const saveTransactionSBP = async (orderNumber, amount, patientData) => {
       data = JSON.parse(jsonStr);
     } catch (parseError) {
       console.error('Failed to parse JSON:', jsonStr);
-      // Fallback for testing
-      return {
-        success: true,
-        transactionID: 'TEST_' + Date.now(),
-        formUrl: `https://qr.nspk.ru/test_${Date.now()}`,
-        error: null
-      };
+      throw new Error('Ошибка парсинга ответа от сервера');
     }
     
     return {
@@ -74,13 +64,7 @@ export const saveTransactionSBP = async (orderNumber, amount, patientData) => {
     };
   } catch (error) {
     console.error('Error in saveTransactionSBP:', error);
-    // Return fallback for testing purposes
-    return {
-      success: true,
-      transactionID: 'TEST_' + Date.now(),
-      formUrl: `https://qr.nspk.ru/test_${Date.now()}`,
-      error: null
-    };
+    throw error;
   }
 };
 

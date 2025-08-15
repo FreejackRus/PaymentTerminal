@@ -27,13 +27,10 @@ const PaymentMethodSelection = ({ paymentData, onBack, onCardPayment, onSBPPayme
                         <span className={styles.orderLabel}>{t('paymentMethods.service', currentLanguage)}:</span>
                         <span className={styles.orderValue}>{paymentData?.service || 'Консультация терапевта'}</span>
                     </div>
-                    <div className={styles.orderRow}>
-                        <span className={styles.orderLabel}>{t('paymentMethods.patient', currentLanguage)}:</span>
-                        <span className={styles.orderValue}>{paymentData?.patient || 'Иванов И.И.'}</span>
-                    </div>
+
                     <div className={`${styles.orderRow} ${styles.totalRow}`}>
                         <span className={styles.orderLabel}>{t('paymentMethods.totalAmount', currentLanguage)}:</span>
-                        <span className={styles.orderValue}>{paymentData?.amount || '2 500,00 ₽'}</span>
+                        <span className={styles.orderValue}>{paymentData?.total} ₽</span>
                     </div>
                 </div>
                 

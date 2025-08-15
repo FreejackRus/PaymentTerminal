@@ -33,7 +33,6 @@ const translations = {
       cash: "Наличные",
       orderNumber: "Номер заказа",
       service: "Услуга",
-      patient: "Пациент",
       totalAmount: "Сумма к оплате",
       warning1: "Выберите способ оплаты, нажав на соответствующий блок.",
       warning2: "После выбора вы будете перенаправлены на экран оплаты выбранным способом."
@@ -69,7 +68,6 @@ const translations = {
     sbpPayment: {
       title: "Оплата через Систему Быстрых Платежей (СБП)",
       paymentInfo: "Информация о платеже",
-      patient: "Пациент",
       service: "Услуга",
       orderNumber: "Номер заказа",
       date: "Дата",
@@ -130,7 +128,6 @@ const translations = {
       cash: "Cash",
       orderNumber: "Order number",
       service: "Service",
-      patient: "Patient",
       totalAmount: "Amount to pay",
       warning1: "Select a payment method by tapping the corresponding block.",
       warning2: "After selection you will be redirected to the payment screen with the chosen method."
@@ -166,7 +163,6 @@ const translations = {
     sbpPayment: {
       title: "Pay via Fast Payment System (SBP)",
       paymentInfo: "Payment information",
-      patient: "Patient",
       service: "Service",
       orderNumber: "Order number",
       date: "Date",

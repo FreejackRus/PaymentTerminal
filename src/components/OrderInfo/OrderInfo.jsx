@@ -17,7 +17,6 @@ const OrderInfo = ({ orderData, onBack, onContinue }) => {
                 <div className={styles.orderInfo}>
                     <div className={styles.orderDetails}>
                         <p><strong>Заказ:</strong> {orderData.orderNumber}</p>
-                        <p><strong>Пациент:</strong> {orderData.patient}</p>
                         <div className={styles.services}>
                             <h3>Услуги:</h3>
                             {orderData.services.map((service, index) => (

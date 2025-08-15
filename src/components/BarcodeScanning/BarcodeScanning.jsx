@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { t } from '../../config/i18n';
 import styles from './BarcodeScanning.module.css';
@@ -6,29 +6,41 @@ import ProgressBar from '../UI/ProgressBar/ProgressBar';
 import BarcodeInput from '../UI/BarcodeInput/BarcodeInput';
 import scannerIcon from '../../assets/images/scanner-icon.svg';
 import barcodeExample from '../../assets/images/barcode-example-3df7cb.png';
+import orderService from '../../services/orderService';
 
 const BarcodeScanning = ({ onBack, onOrderFound }) => {
     const [isScanning, setIsScanning] = useState(false);
     const { currentLanguage } = useLanguage();
 
-    const handleScan = (barcode) => {
+    // Добавляем глобальную функцию для тестирования OrderManager
+    useEffect(() => {
+        window.testOrderManager = async () => {
+            console.log('Запуск тестирования OrderManager...');
+            const result = await orderService.testOrderManager();
+            console.log('Результат тестирования:', result);
+            return result;
+        };
+
+        // Очистка при размонтировании компонента
+        return () => {
+            delete window.testOrderManager;
+        };
+    }, []);
+
+    const handleScan = async (barcode) => {
         setIsScanning(true);
-        // Имитация поиска информации о платеже
-        setTimeout(() => {
+        
+        try {
+            // Используем orderService для получения данных заказа
+            const orderData = await orderService.getOrderInfo(barcode);
             setIsScanning(false);
-            // Передаем данные о найденном заказе
-            const mockOrderData = {
-                orderNumber: '019278296',
-                patient: 'Иванов Иван Иванович',
-                services: [
-                    { name: 'Консультация терапевта', quantity: 1, price: 1500 },
-                    { name: 'Общий анализ крови', quantity: 1, price: 800 },
-                    { name: 'ЭКГ', quantity: 1, price: 1200 }
-                ],
-                total: 3500
-            };
-            onOrderFound(mockOrderData);
-        }, 2000);
+            onOrderFound(orderData);
+        } catch (error) {
+            console.error('Ошибка поиска заказа:', error);
+            setIsScanning(false);
+            // Пробрасываем ошибку дальше - пусть родительский компонент решает что делать
+            throw error;
+        }
     };
 
     return (

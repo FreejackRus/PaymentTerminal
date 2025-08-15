@@ -4,6 +4,7 @@ import ProgressBar from '../UI/ProgressBar/ProgressBar';
 import { saveTransactionSBP, checkTransactionSBP } from '../../api/payment';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { t } from '../../config/i18n';
+import orderService from '../../services/orderService';
 
 const SBPPayment = ({ paymentData, onBack, onPaymentComplete }) => {
     const [isProcessing, setIsProcessing] = useState(false);
@@ -30,6 +31,17 @@ const SBPPayment = ({ paymentData, onBack, onPaymentComplete }) => {
             
             checkInterval = setInterval(async () => {
                 try {
+                    // Проверяем статус через OrderManager
+                    if (paymentData?.orderNumber) {
+                        try {
+                            const orderStatus = await orderService.checkPaymentStatus(paymentData.orderNumber);
+                            console.log('OrderManager payment status:', orderStatus);
+                        } catch (statusError) {
+                            console.warn('OrderManager status check failed:', statusError);
+                        }
+                    }
+                    
+                    // Используем существующий API для проверки статуса СБП
                     const result = await checkTransactionSBP(transactionId);
                     if (result.success) {
                         if (result.completed) {
@@ -37,7 +49,11 @@ const SBPPayment = ({ paymentData, onBack, onPaymentComplete }) => {
                             setIsProcessing(false);
                             setProgress(100);
                             setTimeout(() => {
-                                onPaymentComplete();
+                                onPaymentComplete({
+                                    status: 'success',
+                                    transactionId: transactionId,
+                                    amount: paymentData?.total || paymentData?.amount || '2000'
+                                });
                             }, 2000);
                             clearInterval(checkInterval);
                             clearInterval(progressInterval);
@@ -77,11 +93,28 @@ const SBPPayment = ({ paymentData, onBack, onPaymentComplete }) => {
         setError(null);
 
         try {
-            const patientData = `${paymentData?.patientLastname || ''};${paymentData?.patientFirstname || ''};${paymentData?.patientMiddlename || ''};${paymentData?.patientBirthDate || ''};;`;
+            const patientData = "ТОТ ЖЕ";
             
-            const amount = paymentData?.amount || '2000';
+            const amount = paymentData?.total || paymentData?.amount;
+            if (!amount) {
+                throw new Error('Сумма платежа не указана');
+            }
             const cleanAmount = amount.toString().replace(/[^\d.]/g, '');
             
+            // Временно отключаем регистрацию через OrderManager из-за недоступности API
+            // try {
+            //     const registrationResult = await orderService.registerOrderForPayment(paymentData, {
+            //         amount: parseFloat(cleanAmount),
+            //         patientData: patientData,
+            //         returnUrl: window.location.origin + '/payment-success'
+            //     });
+            //     
+            //     console.log('Order registration result:', registrationResult);
+            // } catch (regError) {
+            //     console.warn('OrderManager registration failed, using fallback:', regError);
+            // }
+            
+            // Затем используем существующий API для СБП
             const result = await saveTransactionSBP(
                 paymentData?.orderNumber || '000000', 
                 cleanAmount, 
@@ -150,9 +183,7 @@ const SBPPayment = ({ paymentData, onBack, onPaymentComplete }) => {
                             <>
                                 <div className={styles.paymentInfo}>
                                     <h3 className={styles.infoTitle}>{t('sbpPayment.paymentInfo', currentLanguage)}</h3>
-                                    <div className={styles.infoItem}>
-                                        <span>{t('sbpPayment.patient', currentLanguage)}: {paymentData?.patient || `${paymentData?.patientLastname || ''} ${paymentData?.patientFirstname || ''} ${paymentData?.patientMiddlename || ''}`.trim() || 'Иванов Иван Иванович'}</span>
-                                    </div>
+
                                     <div className={styles.infoItem}>
                                         <span>{t('sbpPayment.service', currentLanguage)}: {paymentData?.service || 'Консультация терапевта'}</span>
                                     </div>
@@ -164,7 +195,7 @@ const SBPPayment = ({ paymentData, onBack, onPaymentComplete }) => {
                                     </div>
                                     <div className={styles.amountInfo}>
                                         <span>{t('sbpPayment.amountToPay', currentLanguage)}:</span>
-                                        <span className={styles.amount}>{paymentData?.amount || '1 500,00 ₽'}</span>
+                                        <span className={styles.amount}>{paymentData?.total +'  ₽'}</span>
                                     </div>
                                 </div>
                                 <div className={styles.actions}>
