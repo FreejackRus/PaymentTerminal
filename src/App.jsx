@@ -8,6 +8,8 @@ import PaymentMethodSelection from './components/PaymentMethodSelection/PaymentM
 import CardPayment from './components/CardPayment/CardPayment';
 import SBPPayment from './components/SBPPayment/SBPPayment';
 import PaymentSuccess from './components/PaymentSuccess/PaymentSuccess';
+import InactivityDialog from './components/InactivityDialog/InactivityDialog';
+import useInactivityTimer from './hooks/useInactivityTimer';
 
 const SCREENS = {
   MAIN: 'main',
@@ -22,6 +24,17 @@ const SCREENS = {
 function App() {
   const [currentScreen, setCurrentScreen] = useState(SCREENS.MAIN);
   const [paymentData, setPaymentData] = useState(null);
+  const { isInactive, resetTimer } = useInactivityTimer(10000); // 10 секунд
+
+  const handleContinueSession = () => {
+    resetTimer();
+  };
+
+  const handleEndSession = () => {
+    setCurrentScreen(SCREENS.MAIN);
+    setPaymentData(null);
+    resetTimer();
+  };
 
   return (
     <LanguageProvider>
@@ -82,6 +95,12 @@ function App() {
             onNewPayment={() => setCurrentScreen(SCREENS.MAIN)}
           />
         )}
+        
+        <InactivityDialog
+          isOpen={isInactive && currentScreen !== SCREENS.MAIN}
+          onContinue={handleContinueSession}
+          onCancel={handleEndSession}
+        />
       </div>
     </LanguageProvider>
   );

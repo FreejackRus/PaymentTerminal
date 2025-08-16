@@ -92,6 +92,13 @@ const translations = {
       medicalServices: "Оплата медицинских услуг",
       recipient: "ВОККДЦ",
       bankCard: "Банковская карта"
+    },
+    inactivityDialog: {
+      title: "Вы ещё здесь?",
+      message: "Обнаружена длительная неактивность. Хотите продолжить работу с терминалом?",
+      countdown: "Автоматическое завершение через {seconds} сек.",
+      continue: "Продолжить",
+      cancel: "Завершить"
     }
   },
   en: {
@@ -187,6 +194,13 @@ const translations = {
       medicalServices: "Payment for medical services",
       recipient: "VOKKDTS",
       bankCard: "Bank card"
+    },
+    inactivityDialog: {
+      title: "Are you still here?",
+      message: "Long inactivity detected. Do you want to continue using the terminal?",
+      countdown: "Auto-close in {seconds} sec.",
+      continue: "Continue",
+      cancel: "Exit"
     }
   }
 }
